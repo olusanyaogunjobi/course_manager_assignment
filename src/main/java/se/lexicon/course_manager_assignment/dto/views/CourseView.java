@@ -1,6 +1,10 @@
 package se.lexicon.course_manager_assignment.dto.views;
 
+import se.lexicon.course_manager_assignment.model.Student;
+
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,14 +14,15 @@ public class CourseView {
     private final String courseName;
     private final LocalDate startDate;
     private final int weekDuration;
-    private List<StudentView> students;
+    private HashSet<Student> students;
 
-    public CourseView(int id, String courseName, LocalDate startDate, int weekDuration, List<StudentView> students) {
+    public CourseView(int id, String courseName, LocalDate startDate, int weekDuration, HashSet<Student> students) {
         this.id = id;
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
         this.students = students;
+
     }
 
     public int getId() {
@@ -37,7 +42,8 @@ public class CourseView {
     }
 
     public List<StudentView> getStudents() {
-        return students;
+
+        return null;
     }
 
     @Override

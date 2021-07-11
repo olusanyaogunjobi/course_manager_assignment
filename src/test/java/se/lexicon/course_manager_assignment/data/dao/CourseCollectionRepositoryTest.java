@@ -30,4 +30,40 @@ public class CourseCollectionRepositoryTest {
         testObject.clear();
         CourseSequencer.setCourseSequencer(0);
     }
+
+    @Test
+    void createCourse() {
+    }
+
+    @Test
+    void findById() {
+    }
+
+    @Test
+    void findByNameContains() {
+    }
+
+    @Test
+    void findByDateBefore() {
+    }
+
+    @Test
+    void findByDateAfter() {
+    }
+
+    @Test
+    void findAll() {
+    }
+
+    @Test
+    void findByStudentId() {
+    }
+
+    @Test
+    void removeCourse() {
+    }
+
+    @Test
+    void clear() {
+    }
 }
