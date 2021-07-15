@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class Course {
 
-    private int Id;
+    private int id;
     private String courseName;
     private int weekDuration;
     private LocalDate startDate;
@@ -17,7 +17,7 @@ public class Course {
 
 
     public Course(int courseId, String courseName, int weekDuration, LocalDate startDate, List<Student> students) {
-        this.Id = courseId;
+        this.id = courseId;
         this.courseName = courseName;
         this.weekDuration = weekDuration;
         this.startDate = startDate;
@@ -25,11 +25,11 @@ public class Course {
     }
 
     public int getCourseId() {
-        return Id;
+        return id;
     }
 
     public void setCourseId(int courseId) {
-        this.Id = courseId;
+        this.id = courseId;
     }
 
     public String getCourseName() {
@@ -89,7 +89,7 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "courseId=" + Id +
+                "courseId=" + id +
                 ", courseName='" + courseName + '\'' +
                 ", weekDuration=" + weekDuration +
                 ", startDate=" + startDate +

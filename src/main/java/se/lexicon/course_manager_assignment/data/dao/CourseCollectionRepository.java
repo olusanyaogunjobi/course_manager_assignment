@@ -22,55 +22,96 @@ public class CourseCollectionRepository implements CourseDao {
     }
 
     @Override
-    public Course createCourse(String courseName, LocalDate startDate, int weekDuration) {
+    public ArrayList<Object> createCourse(String courseName, LocalDate startDate, int weekDuration) {
         ArrayList<Object> courses = new ArrayList<>();
         courses.add(courseName);
         courses.add(weekDuration);
         courses.add(startDate);
 
-        return null;
+        return courses;
     }
 
     @Override
     public Course findById(int id) {
 
-        boolean result = courses.contains(id);
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getCourseId() == id) {
+                return course;
+            }
+        }
         return null;
     }
 
     @Override
     public Collection<Course> findByNameContains(String name) {
 
-        boolean result = courses.contains(name);
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getCourseName() == name) {
+
+                return (Collection<Course>) course;
+            }
+        }
         return null;
     }
 
     @Override
     public Collection<Course> findByDateBefore(LocalDate end) {
 
-        boolean result = courses.contains(end);
+        ArrayList<Course> courses = new ArrayList<>();
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getStartDate().equals(end)) {
+
+                return (Collection<Course>) course;
+            }
+        }
         return null;
     }
 
     @Override
     public Collection<Course> findByDateAfter(LocalDate start) {
 
-        boolean result = courses.contains( start);
+        ArrayList<Course> courses = new ArrayList<>();
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+            Course course = iterator.next();
+            if (course.getStartDate().equals(start)) {
+
+                return (Collection<Course>) course;
+            }
+        }
         return null;
     }
 
     @Override
     public Collection<Course> findAll() {
+        ArrayList<Course> allCourses = new ArrayList<>();
 
-
-        return null;
+        if (allCourses.addAll(courses)) {
+            return allCourses;
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public Collection<Course> findByStudentId(int studentId) {
+    public int findByStudentId(int studentId) {
 
-        boolean result = courses.contains(studentId);
-        return null;
+        ArrayList<Course> courses = new ArrayList<>();
+        Iterator<Course> iterator = courses.iterator();
+        while (iterator.hasNext()) {
+
+            Course course = iterator.next();
+            if (course.getStudents().contains(studentId)) {
+                return studentId;
+            }
+        }
+    return 0;
     }
 
     @Override
