@@ -49,6 +49,7 @@ public class Course {
     }
 
     public LocalDate getStartDate() {
+
         return startDate;
     }
 
@@ -56,15 +57,15 @@ public class Course {
         this.startDate = startDate;
     }
 
-    public HashSet<Student> getStudents() {
+    public Collection<Student> getStudents() {
 
-        return null;
+        return students;
     }
 
     public void setStudents(Collection<Student> students) {
 
 
-        this.setStudents(students);
+        this.students =students;
     }
 
     @Override
