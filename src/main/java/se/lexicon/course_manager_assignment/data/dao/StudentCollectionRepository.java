@@ -2,14 +2,12 @@ package se.lexicon.course_manager_assignment.data.dao;
 
 
 
-import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
 import se.lexicon.course_manager_assignment.model.Student;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.stream.Collectors;
 
 
 public class StudentCollectionRepository implements StudentDao {
@@ -24,12 +22,14 @@ public class StudentCollectionRepository implements StudentDao {
     }
 
     @Override
-    public Student createStudent(String name, String email, String address) {
+    public ArrayList<Object> createStudent(String name, String email, String address) {
 
-        Student student = new Student(name, email, address);
-        students.add(student);
+        ArrayList<Object> students = new ArrayList<>();
+        students.add(name);
+        students.add(email);
+        students.add(address);
 
-        return student;
+        return students;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class StudentCollectionRepository implements StudentDao {
         while (iterator.hasNext()) {
 
             Student student = iterator.next();
-            if (student.getStudentEmail().equals(email)) {
+            if (student.getStudentEmail().equalsIgnoreCase(email)) {
                 return student;
             }
         }
@@ -54,7 +54,7 @@ public class StudentCollectionRepository implements StudentDao {
         while (iterator.hasNext()) {
             Student student = iterator.next();
             if (student.getStudentName().equals(name)) {
-                return students;
+                return (Collection<Student>) student;
             }
         }
 
@@ -63,11 +63,11 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Student findById(int id) {
-        ArrayList<Student> students = new ArrayList<>();
+
         Iterator<Student> iterator = students.iterator();
         while (iterator.hasNext()) {
             Student student = iterator.next();
-            if (student == student) {
+            if (student.getStudentId() == id) {
                 return student;
             }
         }
@@ -76,10 +76,11 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findAll() {
+    HashSet<Student> allStudents = new HashSet<>();
 
+    allStudents.addAll(students);
 
-
-        return null;
+        return allStudents;
     }
 
     @Override

@@ -14,9 +14,9 @@ public class CourseView {
     private final String courseName;
     private final LocalDate startDate;
     private final int weekDuration;
-    private HashSet<Student> students;
+    private List<StudentView> students;
 
-    public CourseView(int id, String courseName, LocalDate startDate, int weekDuration, HashSet<Student> students) {
+    public CourseView(int id, String courseName, LocalDate startDate, int weekDuration, List<StudentView> students) {
         this.id = id;
         this.courseName = courseName;
         this.startDate = startDate;
